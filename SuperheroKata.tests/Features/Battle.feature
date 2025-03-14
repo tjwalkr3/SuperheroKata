@@ -37,9 +37,14 @@ Feature: RPG Battle System
     Then the "monster" should be defeated
 
   Scenario: special abilities
-    Given a "hero" with 50 health and 10 attack power
-    And a the "hero" has the special ability “power word kill”
+    Given a "hero" with 50 health and 10 attack power 
+    And the "hero" has the special ability "power word kill" 
     And a "monster" with 50 health and 10 attack power
-    When the hero uses their ability
-    And the "hero" attacks the "monster"
+    When the "hero" uses their ability on the "monster"
     Then the "monster" should be defeated
+
+  Scenario: random attack
+    Given a "hero" with 50 health and 10 attack power 
+    And a "monster" with 50 health and 10 attack power
+    When the "hero" attacks the "monster" seed 10
+    Then the "monster" should have 31 health remaining

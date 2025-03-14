@@ -56,6 +56,28 @@ namespace SuperheroKata.Tests.StepDefinitions
             hero.Attack(monster, true);
         }
 
+        [Given("the {string} has the special ability {string}")]
+        public void GivenATheHasTheSpecialAbilityPowerWordKill(string key1, string ability)
+        {
+            var hero = context.Get<Unit>(key1);
+            hero.AddAbility(ability);
+        }
+
+        [When("the {string} uses their ability on the {string}")]
+        public void WhenTheHeroUsesTheirAbility(string key1, string key2)
+        {
+            var hero = context.Get<Unit>(key1);
+            var monster = context.Get<Unit>(key2);
+            hero.UseAbility(monster);
+        }
+
+        [When("the {string} attacks the {string} seed {int}")]
+        public void WhenTheAttacksTheSeed(string key1, string key2, int seed)
+        {
+            var hero = context.Get<Unit>(key1);
+            var monster = context.Get<Unit>(key2);
+            hero.Attack(monster, false, seed);
+        }
 
     }
 }
